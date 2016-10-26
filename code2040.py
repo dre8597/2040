@@ -1,4 +1,3 @@
-from urllib2 import Request, urlopen, URLError
 import json, requests
 
 t= '18f7ae041f26ac48d019bcfbb5f4ab4f'
