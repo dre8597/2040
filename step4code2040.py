@@ -9,10 +9,7 @@ prefix= arry['prefix']
 words = arry['array']
 answer = []
 for x in words:
-    if x.startswith(prefix):
+    if not x.startswith(prefix):
         answer.append(x)
-request1 = requests.post('http://challenge.code2040.org/api/prefix/validate',data={'token':myToken,'array':answer})
+request1 = requests.post('http://challenge.code2040.org/api/prefix/validate',json={'token':myToken,'array':answer})
 print(request1.text)
-print answer
-print prefix
-print arry
