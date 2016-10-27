@@ -6,5 +6,11 @@ request = requests.post('http://challenge.code2040.org/api/dating',json={'token'
 arry = json.loads(request.text)
 date= arry['datestamp']
 timeAdd = arry['interval']
-print dateutil.parser.parse(date)
 print date
+date = datetime.datetime.strptime(str(dateutil.parser.parse(date))[:-6], '%Y-%m-%d %H:%M:%S')
+newTime= date + datetime.timedelta(seconds=timeAdd)
+#hard coding in yay
+strTime= str(newTime) + 'Z'
+strTime = strTime.replace(' ', 'T')
+request1 = requests.post('http://challenge.code2040.org/api/dating/validate',data={'token':myToken,'datestamp':strTime})
+print(request1.text)
